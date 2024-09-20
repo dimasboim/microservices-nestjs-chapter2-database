@@ -1,8 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateBookDto } from './dto/create-book.dto';
-import { UpdateBookDto } from './dto/update-book.dto';
 import { BookDTO } from './dto/book.dto';
-
+import { UpdateBookDto } from './dto/update-book.dto';
 @Injectable()
 export class BooksService {
   private books:BookDTO[] = [
@@ -27,6 +26,14 @@ export class BooksService {
     this.books.push(newBook);
     return newBook;
   }
+  update(id:number,UpdateBookDto: UpdateBookDto) {
+    // const newBook:BookDTO={
+    //   ...createBookDto,
+    //   id:this.books.length+1
+    // }
+    // this.books.push(newBook);
+    return UpdateBookDto;
+  }
 
   findAll() { 
     return this.books;
@@ -34,15 +41,5 @@ export class BooksService {
 
   findOne(id: number) {
     return this.books.find(book=>book.id===id);
-  }
-
-  update(id: number, updateBookDto: UpdateBookDto) {
-    var bookW:UpdateBookDto;
-    bookW=this.books.find(book=>book.id===id);
-    return  bookW;
-  }
-
-  remove(id: number) {
-    return this.books.filter(book=>book.id!==id);
   }
 }

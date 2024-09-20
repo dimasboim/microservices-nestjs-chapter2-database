@@ -4,7 +4,6 @@ import{userDTO} from './dto/user.dto';
 
 @Injectable()
 export class UsersService {
-  
   private users: userDTO[] = [
     {
       id:1,
@@ -26,7 +25,6 @@ export class UsersService {
     },
 
   ];
-
   findAll(){
     return this.users;
   }
